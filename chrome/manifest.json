@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Substack AI Summarizer",
+  "version": "1.0",
+  "description": "Summarizes Substack articles directly on the page using the Gemini API.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.dividendtalks.com/*",
+    "https://*.dividendology.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.dividendtalks.com/*",
+        "https://www.dividendology.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ]
+}

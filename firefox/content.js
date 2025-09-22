@@ -64,6 +64,7 @@
     const articleBody = document.querySelector('article.newsletter-post .body.markup');
     if (articleBody) {
       const articleText = articleBody.innerText;
+      console.debug('Sending article text to AI for summary:', articleText);
       browser.runtime.sendMessage({ action: 'generateSummary', text: articleText }, response => {
         if (browser.runtime.lastError) {
           resultArea.innerText = 'Error: ' + browser.runtime.lastError.message;
@@ -98,6 +99,7 @@
     const articleBody = document.querySelector('article.newsletter-post .body.markup');
     if (articleBody) {
       const articleText = articleBody.innerText;
+      console.debug('Sending question and article text to AI:', { question, articleText });
       browser.runtime.sendMessage({
         action: 'askQuestion',
         question: question,
